@@ -1,0 +1,14 @@
+[include]
+path = .ext.gitconfig
+[user]
+email = limc@limcode.cn
+name = SunnyLimc
+signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGP+BKsrSOIpeooYeZKTfjuwFPvfrL4JEC5M38sZve6 limc@limcode.cn
+[core]
+excludesFile = ~/.gitignore
+[gpg]
+format = ssh
+[commit]
+gpgsign = true
+[tag]
+gpgsign = true

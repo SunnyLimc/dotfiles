@@ -1,0 +1,27 @@
+# For ssh-agent
+SSH_ENV="$HOME/.ssh/agent-environment"
+function start_agent {
+    echo "Initialising new SSH agent..."
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    # /usr/bin/ssh-add;
+}
+# Source SSH settings, if applicable
+if [ -f "${SSH_ENV}" ]; then
+    . "${SSH_ENV}" > /dev/null
+    #ps ${SSH_AGENT_PID} doesn't work under cywgin
+    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+        start_agent;
+    }
+else
+    start_agent;
+fi
+
+# Link id_rsa from host
+# Link global .gitignore from host
+cp -f /mnt/c/Users/Limc/Documents/workFolder/.ssh/id_rsa /home/limc/.ssh/id_rsa
+chmod 400 /home/limc/.ssh/id_rsa
+cp -f /mnt/c/Users/Limc/.gitignore /home/limc/.gitignore
+chmod 644 /home/limc/.gitignore

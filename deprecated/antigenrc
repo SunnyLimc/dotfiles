@@ -1,0 +1,26 @@
+# Load oh-my-zsh library
+antigen use oh-my-zsh
+
+# Load bundles from the default repo (oh-my-zsh)
+antigen bundle git
+antigen bundle z
+antigen bundle sudo
+antigen bundle command-not-found
+antigen bundle docker
+antigen bundle vi-mode
+
+# Load bundles from external repos
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+# antigen bundle jeffreytse/zsh-vi-mode
+antigen bundle zsh-users/zsh-history-substring-search
+
+# Tell Antigen that you're done
+antigen apply
+
+# better support for history search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+

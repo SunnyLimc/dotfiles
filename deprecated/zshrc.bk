@@ -1,0 +1,96 @@
+# Check running environment
+unameOut="$(uname -s)"
+case "$(uname -s)" in
+  Linux*) mactag=Linux;;
+  CYGWIN*|MINGW*|MSYS) mactag=Windows;;
+  *) mactag=Other;;
+esac
+
+# [outdated] configure PAGER to most
+# export PAGER=most
+# export LESSOPEN="| $HOME/.lesspipe/lesspipe.sh %s"
+# export LESS=' -R '
+
+# SOME ENVS
+export HOMEW="/mnt/c/Users/Limc/"
+
+# For set proxy
+# MUST BE at the top of configuration
+source /home/limc/.proxy.sh set
+
+# Load something in background
+# copy ssh-key and .gitignore
+# init ssh-agent
+# etc.
+
+source "$HOME/.antigen/antigen.zsh"
+# Load oh-my-zsh library
+antigen use oh-my-zsh
+# Load bundles from the default repo (oh-my-zsh)
+antigen bundle git
+antigen bundle z
+antigen bundle sudo
+antigen bundle command-not-found
+antigen bundle docker
+antigen bundle vi-mode
+# Load bundles from external repos
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+# antigen bundle jeffreytse/zsh-vi-mode
+antigen bundle zsh-users/zsh-history-substring-search
+# Tell Antigen that you're done
+antigen apply
+# better support for history search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+
+# setting for brew
+export HOMEBREW_NO_ENV_HINTS=1
+
+# setting up permanent alias & env
+source $HOME/.env
+source $HOME/.alias
+
+# drop winodws PATH to increase oh-my-zsh speed
+# export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+# bind ctrl-backspace to delete-word
+bindkey '^H' backward-kill-word
+
+# set HIP environment variable
+export HIP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
+
+# set GPG_TTY for issue: https://github.com/microsoft/WSL/issues/4029
+export GPG_TTY=$(tty)
+
+# linuxbrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# poetry
+export PATH="$HOME/.poetry/bin:$PATH"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/limc/.anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/limc/.anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/limc/.anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/limc/.anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# starship
+eval "$(starship init zsh)"
+
+# PATH="$HOME/.local/bin:$PATH"
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#
