@@ -1,4 +1,5 @@
 [core]
 sshCommand = 'C:\\Windows\\System32\\OpenSSH\\ssh.exe'
+fileMode = false
 [http]
 proxy = http://localhost:7890
