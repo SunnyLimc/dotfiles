@@ -1,3 +1,4 @@
 ssh/
 win-ssh/
 *.keepit
+tmux/plugins

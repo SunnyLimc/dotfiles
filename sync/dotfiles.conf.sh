@@ -56,7 +56,7 @@ g_sync_files=("dotfiles.conf.sh" "sync-dotfile.sh")
 g_sync_dst_prefix="/."
 g_sync_osonly=0
 
-g_tmux_src_prefix="/tmux/"
-g_tmux_files=(".tmux.conf" ".tmux.conf.local")
-g_tmux_dst_prefix="/"
+g_tmux_src_prefix="/tmux/."
+g_tmux_files=("tmux.conf" "tmux.conf.local")
+g_tmux_dst_prefix="/."
 g_tmux_osonly=0
