@@ -75,8 +75,8 @@ fi
 # git
 if islinux; then
   export GIT_CONFIG_COUNT=1
-  export GIT_CONFIG_KEY_1=http.proxy
-  export GIT_CONFIG_VALUE_1=$HTTP_PROXY
+  export GIT_CONFIG_KEY_0=http.proxy
+  export GIT_CONFIG_VALUE_0=$HTTP_PROXY
 fi
 
 # gpg
