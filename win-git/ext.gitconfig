@@ -1,5 +1,9 @@
 [core]
-sshCommand = 'C:\\Windows\\System32\\OpenSSH\\ssh.exe'
+sshCommand = 'D:\\Scoop\\shims\\ssh.exe'
 fileMode = false
 [http]
 proxy = http://localhost:7890
+[commit]
+gpgsign = false
+[tag]
+gpgsign = false
