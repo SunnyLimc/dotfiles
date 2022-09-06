@@ -6,10 +6,6 @@ name = SunnyLimc
 signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGP+BKsrSOIpeooYeZKTfjuwFPvfrL4JEC5M38sZve6 limc@limcode.cn
 [core]
 excludesFile = ~/.gitignore
-	autocrlf = true
+autocrlf = true
 [gpg]
 format = ssh
-[commit]
-gpgsign = true
-[tag]
-gpgsign = true
