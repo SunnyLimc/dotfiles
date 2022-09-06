@@ -1,6 +1,6 @@
 [core]
 sshCommand = 'D:\\Scoop\\shims\\ssh.exe'
-fileMode = false
+filemode = false
 [http]
 proxy = http://localhost:7890
 [commit]
