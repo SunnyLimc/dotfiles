@@ -1,6 +1,7 @@
 [core]
 sshCommand = 'C:/Program Files/OpenSSH/ssh.exe'
 filemode = false
+autocrlf = true
 [gpg "ssh"]
 program = "C:/Users/Limc/AppData/Local/1Password/app/8/op-ssh-sign.exe"
 [http]

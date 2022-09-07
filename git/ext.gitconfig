@@ -2,3 +2,7 @@
 gpgsign = true
 [tag]
 gpgsign = true
+[core]
+autocrlf = input
+[gpg "ssh"]
+program = "/mnt/c/Users/Limc/AppData/Local/1Password/app/8/op-ssh-sign.exe"
