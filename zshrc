@@ -29,6 +29,7 @@ alias vim=nvim
 islinux && alias wt="wt.exe -p 'Ubuntu Here'"
 alias exp="explorer.exe ."
 islinux && alias cdi="cd $HOME/winhome"
+islinux && alias win="pwsh.exe"
 # phrase
 alias ll="ls -alh"
 alias gs="git status"
@@ -55,23 +56,24 @@ antigen bundle git
 antigen bundle pip
 antigen bundle command-not-found
 antigen bundle z
+# antigen bundle vi-mode
 antigen bundle colored-man-pages
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 antigen bundle zimfw/completion
 antigen bundle zsh-users/zsh-autosuggestions
 # antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle jeffreytse/zsh-vi-mode
+# antigen bundle jeffreytse/zsh-vi-mode
 iswin && antigen theme zimfw/asciiship
 # antigen theme robbyrussell
 # apply
 antigen apply
 
 # zsh-vi-mode compatibility
-zvm_bindkey viins '^[[A' history-beginning-search-backward
-zvm_bindkey viins '^[[B' history-beginning-search-forward
-zvm_bindkey vicmd '^[[A' history-beginning-search-backward
-zvm_bindkey vicmd '^[[B' history-beginning-search-forward
+# zvm_bindkey viins '^[[A' history-beginning-search-backward
+# zvm_bindkey viins '^[[B' history-beginning-search-forward
+# zvm_bindkey vicmd '^[[A' history-beginning-search-backward
+# zvm_bindkey vicmd '^[[B' history-beginning-search-forward
 
 # less
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"

@@ -98,7 +98,7 @@ main() {
     case "${POSITIONAL[0]}" in
     start)
         fg_opts
-        start-stop-daemon --start --oknodo --pidfile "${PIDFILE}" --name wsl-ssh-agent-r --make-pidfile --background --startas "$(realpath $BASH_SOURCE)" ${VERBOSE:+--verbose} ${QUIET:+--quiet} -- foreground "${FG_OPTS[@]}"
+        start-stop-daemon --start --oknodo --pidfile "${PIDFILE}" --name wsl-ssh-agent-r --make-pidfile --background --startas "$0" ${VERBOSE:+--verbose} ${QUIET:+--quiet} -- foreground "${FG_OPTS[@]}"
         ;;
 
     stop)
