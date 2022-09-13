@@ -53,7 +53,7 @@ test_setting(){
 set_apt(){
   iswin && echo "Not support form this OS." && return 1
   if [ "$(id -u)" != "0" ]; then
-    sudo "$0" "$1"
+    sudo "$0" set-apt
     exit $?
   fi
   echo 'Acquire::http::Proxy ''"'${PROXY_HTTP}'"'';' > /etc/apt/apt.conf.d/proxy.conf

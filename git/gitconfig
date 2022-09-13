@@ -12,3 +12,7 @@ format = ssh
 gpgsign = true
 [tag]
 gpgsign = true
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff

@@ -36,7 +36,7 @@ g_nvim_files=("nvim")
 g_nvim_dst_prefix="/.config/"
 g_nvim_osonly=2
 
-g_winnvim_src_prefix="/win-"
+g_winnvim_src_prefix="/"
 g_winnvim_files=("nvim")
 g_winnvim_dst_prefix="/AppData/Local/"
 g_winnvim_osonly=1

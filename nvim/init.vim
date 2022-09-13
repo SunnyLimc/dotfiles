@@ -21,6 +21,8 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'Pocco81/auto-save.nvim'
+Plug 'mbbill/undotree'
  
 
 " Functionalities
@@ -222,6 +224,22 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fc <cmd>Telescope colorscheme<cr>
 nnoremap <leader>f/ <cmd>Telescope current_buffer_fuzzy_find<cr>
+nnoremap <leader>; <cmd>UndotreeToggle<cr>
+
+" persistent undo and noswapfile
+if has("persistent_undo")
+   let target_path = expand(stdpath("data") .. '/undo')
+
+    " create the directory and any parent directories
+    " if the location does not exist.
+    if !isdirectory(target_path)
+        call mkdir(target_path, "p", 0700)
+    endif
+
+    let &undodir=target_path
+    set undofile
+    set noswapfile
+endif
 
 " set cursor to bar
 " autocmd VimLeave * set guicursor=a:bar-ver25-blinkon1

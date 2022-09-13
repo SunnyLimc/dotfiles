@@ -24,6 +24,7 @@ fi
 
 # alias
 # useful for WSL
+alias vimdiff="nvim -d"
 alias vim=nvim
 islinux && alias wt="wt.exe -p 'Ubuntu Here'"
 alias exp="explorer.exe ."
@@ -39,28 +40,38 @@ islinux && alias resd="$HOME/.sync-dotfile.sh"
 # MUST BE at the top of anything executable
 source $HOME/.proxy.sh set
 
+# install it with $(brew --prefix)/opt/fzf/install
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+# shortcuts
+# bind ctrl-backspace to delete-word
+bindkey '^H' backward-kill-word
+
 # antigen
 source $HOME/.scripts/libs/antigen.zsh
 antigen use oh-my-zsh
-# oh-my-zsh
 antigen bundle git
 antigen bundle pip
 antigen bundle command-not-found
 antigen bundle z
 antigen bundle colored-man-pages
-# others
-# antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 antigen bundle zimfw/completion
 antigen bundle zsh-users/zsh-autosuggestions
+# antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle jeffreytse/zsh-vi-mode
 iswin && antigen theme zimfw/asciiship
 # antigen theme robbyrussell
 # apply
 antigen apply
 
-# shortcuts
-# bind ctrl-backspace to delete-word
-bindkey '^H' backward-kill-word
+# zsh-vi-mode compatibility
+zvm_bindkey viins '^[[A' history-beginning-search-backward
+zvm_bindkey viins '^[[B' history-beginning-search-forward
+zvm_bindkey vicmd '^[[A' history-beginning-search-backward
+zvm_bindkey vicmd '^[[B' history-beginning-search-forward
 
 # less
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
@@ -115,3 +126,4 @@ fi
 
 # starship
 islinux && eval "$(starship init zsh)"
+
