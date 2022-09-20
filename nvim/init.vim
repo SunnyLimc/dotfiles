@@ -225,6 +225,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fc <cmd>Telescope colorscheme<cr>
 nnoremap <leader>f/ <cmd>Telescope current_buffer_fuzzy_find<cr>
 nnoremap <leader>; <cmd>UndotreeToggle<cr>
+vnoremap <leader>p "_dP
 
 " persistent undo and noswapfile
 if has("persistent_undo")
@@ -274,7 +275,7 @@ if has("unix")
 				\      '+': $HOME . '/winhome/.wsl/gclpr.exe paste --line-ending lf',
 				\      '*': $HOME . '/winhome/.wsl/gclpr.exe paste --line-ending lf',
 				\   },
-				\   'cache_enabled': 0,
+				\   'cache_enabled': 1,
 				\ }
 		endif
 	endif
