@@ -190,7 +190,7 @@ require('nvim-cmp-config')
 require('lspconfig-config')
 add_capabilities(servers)
 require('telescope-config')
-require('lualine-config')
+-- require('lualine-config')
 require('nvim-tree-config')
 require('diagnostics')
 EOF

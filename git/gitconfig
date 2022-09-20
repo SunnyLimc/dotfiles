@@ -16,3 +16,5 @@ gpgsign = true
 	tool = vimdiff
 [merge]
 	tool = vimdiff
+[credential]
+	helper = manager-core
