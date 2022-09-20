@@ -1,8 +1,16 @@
 """ Optixal's Neovim Init.vim
 
 """ Vim-Plug
+
 call plug#begin()
 
+
+" Essentially
+Plug 'Pocco81/auto-save.nvim'
+Plug 'mbbill/undotree'
+Plug 'SunnyLimc/im-select.nvim'
+
+if !exists('g:vsocde')
 " Core (treesitter, nvim-lspconfig, nvim-cmp, nvim-telescope, nvim-lualine)
 Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
 Plug 'nvim-treesitter/playground'
@@ -21,9 +29,11 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'Pocco81/auto-save.nvim'
-Plug 'mbbill/undotree'
  
+" Aesthetics - Colorschemes
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'zaki/zazen'
+Plug 'yuttie/hydrangea-vim'
 
 " Functionalities
 Plug 'tpope/vim-fugitive'
@@ -46,20 +56,17 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'heavenshell/vim-pydocstring'
 
-" Aesthetics - Colorschemes
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'zaki/zazen'
-Plug 'yuttie/hydrangea-vim'
-
 " Aesthetics - Others
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-journal'
+endif
 
 call plug#end()
 
 """ Main Configurations
 filetype plugin indent on
+set clipboard+=unnamedplus
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab autoindent
 set incsearch ignorecase smartcase hlsearch
 set wildmode=longest,list,full wildmenu
@@ -91,6 +98,7 @@ autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType journal setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 """ Coloring
+if !exists('g:vscode')
 
 " Functions and autocmds to run whenever changing colorschemes
 function! TransparentBackground()
@@ -121,6 +129,7 @@ augroup END
 color dracula
 set termguicolors
 
+endif
 """ Core plugin configuration (vim)
 
 " Treesitter
@@ -164,7 +173,13 @@ autocmd BufLeave term://* stopinsert
 let g:python3_host_prog = '~/.config/nvim/env/bin/python3'
 let g:pydocstring_doq_path = '~/.config/nvim/env/bin/doq'
 
+""" Essentially
+lua << EOF
+require('im-select-config')
+EOF
+
 """ Core plugin configuration (lua)
+if !exists('g:vscode')
 lua << EOF
 local servers = {
     'pyright',
@@ -179,6 +194,8 @@ require('lualine-config')
 require('nvim-tree-config')
 require('diagnostics')
 EOF
+endif
+
 
 """ Custom Functions
 
@@ -244,7 +261,6 @@ endif
 
 " set cursor to bar
 " autocmd VimLeave * set guicursor=a:bar-ver25-blinkon1
-set clipboard+=unnamedplus
 if has("unix")
 	" ----- on UNIX ask lemonade to translate line-endings
 	if empty($WSL_DISTRO_NAME)
