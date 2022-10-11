@@ -56,6 +56,7 @@ set_apt(){
     sudo "$0" set-apt
     exit $?
   fi
+  set_proxy
   echo 'Acquire::http::Proxy ''"'${PROXY_HTTP}'"'';' > /etc/apt/apt.conf.d/proxy.conf
   echo 'Acquire::https::Proxy ''"'${PROXY_HTTP}'"'';' >> /etc/apt/apt.conf.d/proxy.conf
 }
