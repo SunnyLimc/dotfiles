@@ -1,20 +1,27 @@
 [include]
-path = .ext.gitconfig
+  path = .ext.gitconfig
 [user]
-email = limc@limcode.cn
-name = SunnyLimc
-signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGP+BKsrSOIpeooYeZKTfjuwFPvfrL4JEC5M38sZve6 limc@limcode.cn
+  email = limc@limcode.cn
+  name = SunnyLimc
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGP+BKsrSOIpeooYeZKTfjuwFPvfrL4JEC5M38sZve6 limc@limcode.cn
 [core]
-excludesFile = ~/.gitignore
+  excludesFile = ~/.gitignore
 [gpg]
-format = ssh
+  format = ssh
 [commit]
-gpgsign = true
+  gpgsign = true
 [tag]
-gpgsign = true
+  gpgsign = true
 [diff]
 	tool = vimdiff
 [merge]
 	tool = vimdiff
 [credential]
 	helper = manager-core
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = auto
+  page = false

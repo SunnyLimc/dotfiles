@@ -14,8 +14,8 @@ iswin() {
 # env
 export EDITOR=nvim
 export VISUAL=nvim
-export PAGER="nvim +Man!"
-export MANPAGER="nvim +Man!"
+# export PAGER="nvim +Man!"
+# export MANPAGER="nvim +Man!"
 if islinux; then
   PATH=$HOME/winhome/.wsl:$HOME/.local/bin:$PATH
   alias ssha="start-stop-daemon --start --oknodo --pidfile "$HOME/.ssh/wsl-ssh-agent-relay.pid" --name wsl-ssh-agent-r --make-pidfile --background --startas "$HOME/dotfile/bin/wsl-ssh-agent-relay" foreground"
