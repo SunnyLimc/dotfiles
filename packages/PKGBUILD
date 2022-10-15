@@ -228,7 +228,7 @@ package_limc-base() {
         'docker-compose'
         'direnv'
         'terraform'
-        'terraform-ls'
+        # 'terraform-ls'
         'teehee'
         'strace'
         'fzf'
@@ -325,7 +325,7 @@ package_limc-base() {
 
         # media
         # removed due to conflict with wireplumber
-        'xdg-desktop-portal-wlr'
+        #'xdg-desktop-portal-wlr'
         'wireplumber'
 
         # video
