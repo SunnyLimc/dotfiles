@@ -8,7 +8,7 @@ pkgver=3.0.1
 pkgrel=1
 pkgdesc='Packages installed by maximbaz (Modified by Limc)'
 arch=('any')
-url='https://github.com/limc/dotfiles'
+url='https://github.com/SunnyLimc/dotfiles'
 license=('ISC')
 source=(
     '30-font-aliases.conf'
@@ -18,12 +18,13 @@ source=(
     'InputMonoNarrow-Italic.ttf'
     'InputMonoNarrow-Regular.ttf'
 )
+# an replaced sha256sum due to the newer version of font
 sha256sums=('ef60468018a9791442a15394723c0436477ee64064c21f8ee9dc0d078eed4834'
     '4bdf58ee96641954c9cf65dd5f5f3202134a672b80a0d1380de682d7c09db9f2'
-    'dda57db7007f47185cf9be4e39184f73fecf052c4e49179cabab6ab5169cc501'
-    'c0ad5882ff0b90e2d319ba98c96b95dac2fde03b86e92c92277c4ea424e86fa9'
-    'f18d42ecce8d549c3ff4022fed2cc96ab9311fea39f00675fb67442d47a774df'
-    'a910ba1e7a1489edd7f89e49af0237aae5a918e0afd7de34bb7f115a7f9ce2e6')
+    'f481b6032fb74f5c0f1774a5fba8b09ee674e48f1af2f917e6cb2fc1de68ed63'
+    '7b760afbc3eb5454a6e6ba296c3da0c351ac089cd0ef4904259376ea42e30d64'
+    '09851a4a524b37425d2646667d13b509e16e03b52fee6a1427d056dece787b69'
+    '36d226da2802699462f8fd686f931f5211900d75055e80ff583e61d1c5a78b4e')
 
 package_limc-base() {
     provides=('dmenu')
@@ -155,7 +156,8 @@ package_limc-base() {
         'bolt'
 
         # audio
-        'pipewire-pulse'
+        # removed due to conflict with wireplumber
+        # 'pipewire-pulse'
         'pulseaudio-alsa'
         'pulseaudio-bluetooth'
         'pamixer'
@@ -165,10 +167,15 @@ package_limc-base() {
         'bluez-utils'
 
         # ui
-        'sway'
+        # substitute by input method supported version
+        # 'sway'
+        'sway-im-git'
         'swaybg'
         'swaylock'
-        'xorg-server-xwayland'
+        # substitute by an hidpi supported version
+        # 'xorg-server-xwayland'
+        'xorg-xwayland-hidpi-xprop'
+        'wlroots-hidpi-xprop-git'
         'wl-clipboard'
         'python-i3ipc'
         'gtk-theme-arc-gruvbox-git'
@@ -365,6 +372,7 @@ package_limc-x86_64() {
         # boot
         'arch-secure-boot'
         'intel-ucode'
+        'amd-ucode'
         'terminus-font'
 
         # virtual machines
