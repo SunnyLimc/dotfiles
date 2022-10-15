@@ -324,6 +324,7 @@ package_limc-base() {
         'v4l2loopback-dkms'
 
         # media
+        # removed due to conflict with wireplumber
         'xdg-desktop-portal-wlr'
         'wireplumber'
 
