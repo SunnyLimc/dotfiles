@@ -7,7 +7,7 @@ build: ## Build the meta-package
 
 .PHONY: install
 install: ## Install the meta-package
-	SNAP_PAC_SKIP=true sudo -E pacman --noconfirm -U maximbaz-base-*.pkg.tar.zst maximbaz-$(shell uname -m)-*.pkg.tar.zst
+	SNAP_PAC_SKIP=true sudo -E pacman --noconfirm -U limc-base-*.pkg.tar.zst limc-$(shell uname -m)-*.pkg.tar.zst
 
 .PHONY: refresh
 refresh: ## Refresh the backup lists
@@ -20,10 +20,10 @@ refresh: ## Refresh the backup lists
 .PHONY: publish
 publish: ## Publish the meta-package in the local repo
 	for type in base $(shell uname -m); do \
-		pkg=maximbaz-$$type-*.pkg.tar.zst; \
+		pkg=limc-$$type-*.pkg.tar.zst; \
 		gpg --detach-sign --yes $$pkg; \
-		repo-add -s /var/cache/pacman/maximbaz-local/maximbaz-local.db.tar $$pkg; \
-		cp $$pkg* /var/cache/pacman/maximbaz-local/; \
+		repo-add -s /var/cache/pacman/limc-local/limc-local.db.tar $$pkg; \
+		cp $$pkg* /var/cache/pacman/limc-local/; \
 	done
 
 .PHONY: clean

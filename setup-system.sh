@@ -38,7 +38,7 @@ copy() {
     if [ -z "$reverse" ]; then
         [ -n "$2" ] && chmod "$2" "$dest_file"
     else
-        chown -R maximbaz "$dest_file"
+        chown -R limc "$dest_file"
     fi
     echo "$dest_file <= $orig_file"
 }
@@ -175,5 +175,5 @@ timedatectl set-ntp true
 
 echo "Configuring aurutils"
 mkdir -p /etc/aurutils
-ln -sf /etc/pacman.conf "/etc/aurutils/pacman-maximbaz-local.conf"
+ln -sf /etc/pacman.conf "/etc/aurutils/pacman-limc-local.conf"
 ln -sf /etc/pacman.conf "/etc/aurutils/pacman-$(uname -m).conf"

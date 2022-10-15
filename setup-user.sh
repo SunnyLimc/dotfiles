@@ -63,7 +63,7 @@ link ".config/git/work"
 link ".config/gtk-3.0"
 link ".config/htop"
 link ".config/imapnotify/archlinux.conf"
-link ".config/imapnotify/maximbaz.conf"
+link ".config/imapnotify/limc.conf"
 link ".config/kak"
 link ".config/kak-lsp"
 link ".config/kitty"
@@ -153,7 +153,7 @@ else
 
     if [[ $HOSTNAME == home-* ]]; then
         if [ -d "$HOME/.mail" ]; then
-            mkdir -p "$HOME/.mail/"{archlinux,maximbaz}
+            mkdir -p "$HOME/.mail/"{archlinux,limc}
             systemctl_enable_start "mbsync.timer"
             systemctl_enable_start "goimapnotify@archlinux.service"
             systemctl_enable_start "goimapnotify@maximbaz.service"
@@ -176,7 +176,7 @@ echo "Configuring MIME types"
 file --compile --magic-file "$HOME/.magic"
 
 if ! gpg -k | grep "$MY_PGP_KEY_ID" > /dev/null; then
-    echo "Importing my public PGP key"
+    echo "Importing maximbaz public PGP key"
     curl -s https://maximbaz.com/pgp_keys.asc | gpg --import
     echo "5\ny\n" | gpg --command-fd 0 --no-tty --batch --edit-key "$MY_PGP_KEY_ID" trust
 fi
@@ -190,7 +190,7 @@ else
     if [ ! -s "$HOME/.config/Yubico/u2f_keys" ]; then
         echo "Configuring YubiKey for passwordless sudo (touch it now)"
         mkdir -p "$HOME/.config/Yubico"
-        pamu2fcfg -umaximbaz > "$HOME/.config/Yubico/u2f_keys"
+        pamu2fcfg -ulimc > "$HOME/.config/Yubico/u2f_keys"
     fi
 fi
 
@@ -213,7 +213,7 @@ echo "Ignoring further changes to often changing config"
 git update-index --assume-unchanged ".config/transmission/settings.json"
 
 echo "Configure repo-local git settings"
-git config user.email "git@maximbaz.com"
-git config user.signingkey "04D7A219B0ABE4C2B62A5E654A2B758631E1FD91"
+git config user.email "git@limcode.cn"
+# git config user.signingkey "04D7A219B0ABE4C2B62A5E654A2B758631E1FD91"
 git config commit.gpgsign true
-git remote set-url origin "git@github.com:maximbaz/dotfiles.git"
+git remote set-url origin "git@github.com:SunnyLimc/dotfiles.git"

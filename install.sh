@@ -1,24 +1,4 @@
 #!/bin/bash
-#
-# Arch Linux installation
-#
-# Bootable USB:
-# - [Download](https://archlinux.org/download/) ISO and GPG files
-# - Verify the ISO file: `$ pacman-key -v archlinux-<version>-dual.iso.sig`
-# - Create a bootable USB with: `# dd if=archlinux*.iso of=/dev/sdX && sync`
-#
-# UEFI setup:
-#
-# - Set boot mode to UEFI, disable Legacy mode entirely.
-# - Temporarily disable Secure Boot.
-# - Make sure a strong UEFI administrator password is set.
-# - Delete preloaded OEM keys for Secure Boot, allow custom ones.
-# - Set SATA operation to AHCI mode.
-#
-# Run installation:
-#
-# - Connect to wifi via: `# iwctl station wlan0 connect WIFI-NETWORK`
-# - Run: `# bash <(curl -sL https://git.io/maximbaz-install)`
 
 set -uo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
@@ -163,7 +143,7 @@ echo -e "\n### Configuring custom repo"
 mkdir "/mnt/var/cache/pacman/${user}-local"
 march="$(uname -m)"
 
-if [[ "${user}" == "maximbaz" && "${hostname}" == "home-"* ]]; then
+if [[ "${user}" == "limc" && "${hostname}" == "home-"* ]]; then
     wget -m -nH -np -q --show-progress --progress=bar:force --reject='index.html*' --cut-dirs=2 -P "/mnt/var/cache/pacman/${user}-local" "https://pkgbuild.com/~maximbaz/repo/${march}"
     rename -- 'maximbaz.' "${user}-local." "/mnt/var/cache/pacman/${user}-local"/*
 else
@@ -234,9 +214,9 @@ arch-chroot /mnt passwd -dl root
 echo -e "\n### Setting permissions on the custom repo"
 arch-chroot /mnt chown -R "$user:$user" "/var/cache/pacman/${user}-local/"
 
-if [ "${user}" = "maximbaz" ]; then
+if [ "${user}" = "limc" ]; then
     echo -e "\n### Cloning dotfiles"
-    arch-chroot /mnt sudo -u $user bash -c 'git clone --recursive https://github.com/maximbaz/dotfiles.git ~/.dotfiles'
+    arch-chroot /mnt sudo -u $user bash -c 'git clone --recursive https://github.com/SunnyLimc/dotfiles.git ~/.dotfiles'
 
     echo -e "\n### Running initial setup"
     arch-chroot /mnt /home/$user/.dotfiles/setup-system.sh
